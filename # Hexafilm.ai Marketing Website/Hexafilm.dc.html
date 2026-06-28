@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:#0A0B0E;color:#F4F6FA;font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:#F5933D;color:#0A0B0E}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid #F5933D;outline-offset:3px;border-radius:6px}
+@keyframes hxAperture{from{transform:rotate(55deg) scale(.4)}to{transform:none}}
+@keyframes hxFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes hxPulse{0%{transform:scale(.9);opacity:.5}70%{transform:scale(2);opacity:0}100%{opacity:0}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+
+<div data-screen-label="Hexafilm.ai — Home" style="overflow-x:hidden;background:#0A0B0E;background-image:radial-gradient(900px 500px at 80% -5%,rgba(245,147,61,.10),transparent 60%),radial-gradient(800px 600px at -5% 8%,rgba(47,211,192,.07),transparent 55%);background-repeat:no-repeat">
+
+<header style="position:sticky;top:0;z-index:60;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(10,11,14,.72);border-bottom:1px solid #232730" data-nav>
+  <nav style="max-width:1200px;margin:0 auto;height:66px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:18px">
+    <a href="#top" style="display:flex;align-items:center;gap:11px">
+      <span data-aperture style="display:inline-flex;filter:drop-shadow(0 2px 9px rgba(245,147,61,.35))"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" style="display:block"><polygon points="22,12 17,20.7 15.5,14" fill="#F5933D" stroke="#0A0B0E" stroke-width="0.6" stroke-linejoin="round"/><polygon points="17,20.7 7,20.7 12,16" fill="#2FD3C0" stroke="#0A0B0E" stroke-width="0.6" stroke-linejoin="round"/><polygon points="7,20.7 2,12 8.5,14" fill="#F5933D" stroke="#0A0B0E" stroke-width="0.6" stroke-linejoin="round"/><polygon points="2,12 7,3.3 8.5,10" fill="#2FD3C0" stroke="#0A0B0E" stroke-width="0.6" stroke-linejoin="round"/><polygon points="7,3.3 17,3.3 12,8" fill="#F5933D" stroke="#0A0B0E" stroke-width="0.6" stroke-linejoin="round"/><polygon points="17,3.3 22,12 15.5,10" fill="#2FD3C0" stroke="#0A0B0E" stroke-width="0.6" stroke-linejoin="round"/></svg></span>
+      <span style="font-weight:800;font-size:19px;letter-spacing:-0.01em;color:#F4F6FA">Hexafilm<span style="color:#2FD3C0">.ai</span></span>
+    </a>
+    <div data-nav-links style="display:flex;align-items:center;gap:clamp(18px,2.4vw,34px);flex-shrink:0">
+      <a href="#portfolio" style="font-size:14.5px;font-weight:500;color:#AEB6C2;transition:color .2s" onMouseOver="this.style.color='#F4F6FA'" onMouseOut="this.style.color='#AEB6C2'">Portfolio</a>
+      <a href="#process" style="font-size:14.5px;font-weight:500;color:#AEB6C2;transition:color .2s" onMouseOver="this.style.color='#F4F6FA'" onMouseOut="this.style.color='#AEB6C2'">Process</a>
+      <a href="#results" style="font-size:14.5px;font-weight:500;color:#AEB6C2;transition:color .2s" onMouseOver="this.style.color='#F4F6FA'" onMouseOut="this.style.color='#AEB6C2'">Results</a>
+      <a href="#pricing" style="font-size:14.5px;font-weight:500;color:#AEB6C2;transition:color .2s" onMouseOver="this.style.color='#F4F6FA'" onMouseOut="this.style.color='#AEB6C2'">Pricing</a>
+      <a href="#book" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#F5933D,#e07b22);color:#0A0B0E;font-weight:700;font-size:14.5px;padding:10px 20px;border-radius:12px;box-shadow:0 8px 26px rgba(245,147,61,.28);transition:transform .2s,box-shadow .2s" onMouseOver="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 32px rgba(245,147,61,.4)'" onMouseOut="this.style.transform='none';this.style.boxShadow='0 8px 26px rgba(245,147,61,.28)'">Book a Call</a>
+    </div>
+    <button data-nav-burger aria-label="Open menu" style="display:none;align-items:center;justify-content:center;width:42px;height:42px;background:#15171C;border:1px solid #232730;border-radius:11px;flex-direction:column;gap:4px">
+      <span style="width:18px;height:2px;background:#F4F6FA;border-radius:2px;display:block"></span>
+      <span style="width:18px;height:2px;background:#F4F6FA;border-radius:2px;display:block"></span>
+      <span style="width:18px;height:2px;background:#F4F6FA;border-radius:2px;display:block"></span>
+    </button>
+  </nav>
+  <div data-nav-menu style="display:none;flex-direction:column;gap:4px;padding:14px 24px 22px;background:rgba(10,11,14,.96);border-bottom:1px solid #232730">
+    <a href="#portfolio" style="padding:12px 0;font-size:16px;font-weight:500;color:#AEB6C2;border-bottom:1px solid #15171C">Portfolio</a>
+    <a href="#process" style="padding:12px 0;font-size:16px;font-weight:500;color:#AEB6C2;border-bottom:1px solid #15171C">Process</a>
+    <a href="#results" style="padding:12px 0;font-size:16px;font-weight:500;color:#AEB6C2;border-bottom:1px solid #15171C">Results</a>
+    <a href="#pricing" style="padding:12px 0;font-size:16px;font-weight:500;color:#AEB6C2;border-bottom:1px solid #15171C">Pricing</a>
+    <a href="#book" style="margin-top:12px;text-align:center;background:linear-gradient(135deg,#F5933D,#e07b22);color:#0A0B0E;font-weight:700;font-size:16px;padding:14px 20px;border-radius:12px">Book a Call</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section style="max-width:1200px;margin:0 auto;padding:clamp(48px,8vw,86px) 24px clamp(56px,8vw,90px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr));gap:clamp(34px,4vw,56px);align-items:center">
+  <div data-reveal>
+    <div style="display:inline-flex;align-items:center;gap:9px;padding:7px 14px 7px 11px;background:#15171C;border:1px solid #232730;border-radius:999px;margin-bottom:26px">
+      <span style="width:7px;height:7px;border-radius:50%;background:#2FD3C0;box-shadow:0 0 10px #2FD3C0;display:block"></span>
+      <span style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.16em;font-size:11px;color:#AEB6C2">AI-Powered Cinematic Studio</span>
+    </div>
+    <h1 style="font-size:clamp(44px,6.6vw,78px);font-weight:800;line-height:1.02;letter-spacing:-0.03em;color:#F4F6FA;margin:0 0 22px">Cinema at<br><span style="background:linear-gradient(115deg,#F5933D 0%,#F5933D 32%,#2FD3C0 100%);-webkit-background-clip:text;background-clip:text;color:transparent">AI speed.</span></h1>
+    <p style="font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:#AEB6C2;max-width:520px;margin:0 0 32px">We produce 3D, cinema-grade ad and explainer videos engineered to cut your cost-per-lead — delivered in days, not months.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:26px">
+      <a href="#book" style="display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,#F5933D,#e07b22);color:#0A0B0E;font-weight:700;font-size:16px;padding:15px 28px;border-radius:12px;box-shadow:0 10px 32px rgba(245,147,61,.32);transition:transform .2s,box-shadow .2s" onMouseOver="this.style.transform='translateY(-2px)';this.style.boxShadow='0 14px 40px rgba(245,147,61,.45)'" onMouseOut="this.style.transform='none';this.style.boxShadow='0 10px 32px rgba(245,147,61,.32)'">Book a Call →</a>
+      <a href="#portfolio" style="display:inline-flex;align-items:center;gap:9px;background:transparent;color:#F4F6FA;font-weight:600;font-size:16px;padding:15px 26px;border-radius:12px;border:1px solid #232730;transition:border-color .2s,background .2s" onMouseOver="this.style.borderColor='#2FD3C0';this.style.background='rgba(47,211,192,.06)'" onMouseOut="this.style.borderColor='#232730';this.style.background='transparent'">See the Portfolio</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <span style="color:#F5933D;font-size:15px;letter-spacing:2px">★★★★★</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#6B7280">Trusted by performance teams · 100% satisfaction guarantee</span>
+    </div>
+  </div>
+
+  <div data-reveal data-delay="120" style="position:relative">
+    <div data-grade style="position:relative;aspect-ratio:16/9;border-radius:16px;border:1px solid #232730;overflow:hidden;background:radial-gradient(120% 90% at 78% 12%,rgba(245,147,61,.42),transparent 55%),radial-gradient(130% 120% at 8% 95%,rgba(47,211,192,.32),transparent 58%),linear-gradient(135deg,#11181b 0%,#0e1416 55%,#161013 100%);box-shadow:0 30px 80px rgba(0,0,0,.5)">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+        <div style="position:relative;width:74px;height:74px">
+          <span style="position:absolute;inset:0;border-radius:50%;background:#F5933D;opacity:.5" data-pulse></span>
+          <button aria-label="Play showreel" style="position:absolute;inset:0;width:74px;height:74px;border-radius:50%;background:linear-gradient(135deg,#F5933D,#e07b22);border:none;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(245,147,61,.5)">
+            <span style="width:0;height:0;border-left:18px solid #0A0B0E;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px;display:block"></span>
+          </button>
+        </div>
+      </div>
+      <div style="position:absolute;left:16px;bottom:16px;display:flex;align-items:center;gap:8px;background:rgba(10,11,14,.55);backdrop-filter:blur(6px);padding:7px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.08)">
+        <span style="width:6px;height:6px;border-radius:50%;background:#2FD3C0;display:block"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#F4F6FA">SHOWREEL · 0:42</span>
+      </div>
+    </div>
+    <div data-metric-badge data-float style="position:absolute;top:-18px;right:-10px;background:#15171C;border:1px solid #232730;border-radius:14px;padding:13px 16px;box-shadow:0 16px 40px rgba(0,0,0,.5)">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:600;color:#F5933D;line-height:1">−68%</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:#AEB6C2;text-transform:uppercase;margin-top:3px">Cost per lead</div>
+    </div>
+    <div data-metric-badge data-float style="position:absolute;bottom:-20px;left:-12px;background:#15171C;border:1px solid #232730;border-radius:14px;padding:13px 16px;box-shadow:0 16px 40px rgba(0,0,0,.5)">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:600;color:#2FD3C0;line-height:1">6 days</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:#AEB6C2;text-transform:uppercase;margin-top:3px">Avg. delivery</div>
+    </div>
+  </div>
+</section>
+
+<section style="border-top:1px solid #15171C;border-bottom:1px solid #15171C">
+  <div data-reveal style="max-width:1200px;margin:0 auto;padding:34px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:30px;align-items:center">
+    <p style="margin:0;font-size:14px;line-height:1.5;color:#6B7280;max-width:320px">Performance teams use Hexafilm to slash cost-per-lead and scale qualified volume.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:14px 38px;align-items:center;justify-content:flex-start">
+      <span style="font-weight:800;font-size:19px;letter-spacing:-0.02em;color:#AEB6C2;opacity:.7">NORTHLY</span>
+      <span style="font-weight:600;font-size:19px;letter-spacing:.02em;color:#AEB6C2;opacity:.7;font-style:italic">Vantix</span>
+      <span style="font-weight:700;font-size:18px;letter-spacing:.04em;color:#AEB6C2;opacity:.7">HELIO</span>
+      <span style="font-weight:500;font-size:18px;color:#AEB6C2;opacity:.7">Bloom&amp;Co</span>
+      <span style="font-weight:800;font-size:18px;letter-spacing:.08em;color:#AEB6C2;opacity:.7">QUANTA</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-weight:500;font-size:16px;color:#AEB6C2;opacity:.7">form/field</span>
+    </div>
+  </div>
+</section>
+
+<section id="results" style="max-width:1200px;margin:0 auto;padding:clamp(60px,8vw,96px) 24px">
+  <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:20px">
+    <div style="background:#15171C;border:1px solid #232730;border-radius:16px;padding:30px 26px;transition:transform .3s,border-color .3s" onMouseOver="this.style.transform='translateY(-5px)';this.style.borderColor='#F5933D'" onMouseOut="this.style.transform='none';this.style.borderColor='#232730'">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:clamp(38px,4vw,48px);font-weight:600;color:#F5933D;line-height:1;letter-spacing:-0.02em">−68%</div>
+      <div style="font-weight:600;font-size:16px;color:#F4F6FA;margin:14px 0 5px">Lower cost-per-lead</div>
+      <div style="font-size:13.5px;color:#6B7280;line-height:1.5">Average CPL drop across recent campaigns.</div>
+    </div>
+    <div style="background:#15171C;border:1px solid #232730;border-radius:16px;padding:30px 26px;transition:transform .3s,border-color .3s" onMouseOver="this.style.transform='translateY(-5px)';this.style.borderColor='#2FD3C0'" onMouseOut="this.style.transform='none';this.style.borderColor='#232730'">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:clamp(38px,4vw,48px);font-weight:600;color:#2FD3C0;line-height:1;letter-spacing:-0.02em">6 days</div>
+      <div style="font-weight:600;font-size:16px;color:#F4F6FA;margin:14px 0 5px">Brief to delivery</div>
+      <div style="font-size:13.5px;color:#6B7280;line-height:1.5">From approved brief to final, broadcast-ready cut.</div>
+    </div>
+    <div style="background:#15171C;border:1px solid #232730;border-radius:16px;padding:30px 26px;transition:transform .3s,border-color .3s" onMouseOver="this.style.transform='translateY(-5px)';this.style.borderColor='#F5933D'" onMouseOut="this.style.transform='none';this.style.borderColor='#232730'">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:clamp(38px,4vw,48px);font-weight:600;color:#F5933D;line-height:1;letter-spacing:-0.02em">+320%</div>
+      <div style="font-weight:600;font-size:16px;color:#F4F6FA;margin:14px 0 5px">Lead volume lift</div>
+      <div style="font-size:13.5px;color:#6B7280;line-height:1.5">Same budget, more qualified leads in the door.</div>
+    </div>
+    <div style="background:#15171C;border:1px solid #232730;border-radius:16px;padding:30px 26px;transition:transform .3s,border-color .3s" onMouseOver="this.style.transform='translateY(-5px)';this.style.borderColor='#2FD3C0'" onMouseOut="this.style.transform='none';this.style.borderColor='#232730'">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:clamp(38px,4vw,48px);font-weight:600;color:#2FD3C0;line-height:1;letter-spacing:-0.02em">100%</div>
+      <div style="font-weight:600;font-size:16px;color:#F4F6FA;margin:14px 0 5px">Satisfaction guarantee</div>
+      <div style="font-size:13.5px;color:#6B7280;line-height:1.5">We refine within fixed scope until it converts.</div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio" style="max-width:1200px;margin:0 auto;padding:clamp(40px,6vw,72px) 24px clamp(60px,8vw,96px)">
+  <div data-reveal style="max-width:680px;margin-bottom:46px">
+    <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:#2FD3C0;margin-bottom:14px">Portfolio</div>
+    <h2 style="font-size:clamp(30px,3.6vw,44px);font-weight:800;letter-spacing:-0.025em;line-height:1.08;color:#F4F6FA;margin:0 0 14px">Cinema-grade films, built to sell</h2>
+    <p style="font-size:16px;line-height:1.55;color:#AEB6C2;margin:0">Every frame is engineered to stop the scroll and lower the lead price — not just look good.</p>
+  </div>
+  <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:22px">
+    <article style="background:#15171C;border:1px solid #232730;border-radius:16px;overflow:hidden;transition:transform .3s,border-color .3s" onMouseOver="this.style.transform='translateY(-6px)';this.style.borderColor='#F5933D'" onMouseOut="this.style.transform='none';this.style.borderColor='#232730'">
+      <div data-grade style="position:relative;aspect-ratio:16/10;background:radial-gradient(120% 90% at 78% 12%,rgba(245,147,61,.42),transparent 55%),radial-gradient(130% 120% at 8% 95%,rgba(47,211,192,.32),transparent 58%),linear-gradient(135deg,#11181b,#0e1416 55%,#161013)">
+        <span style="position:absolute;top:14px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#2FD3C0;background:rgba(10,11,14,.55);padding:5px 10px;border-radius:999px;border:1px solid rgba(47,211,192,.3)">E-commerce</span>
+        <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(10,11,14,.45);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center"><span style="width:0;height:0;border-left:13px solid #F4F6FA;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:4px;display:block"></span></span>
+      </div>
+      <div style="padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <span style="font-weight:600;font-size:15.5px;color:#F4F6FA">Skincare launch film</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#F5933D;white-space:nowrap">CPL −64%</span>
+      </div>
+    </article>
+    <article style="background:#15171C;border:1px solid #232730;border-radius:16px;overflow:hidden;transition:transform .3s,border-color .3s" onMouseOver="this.style.transform='translateY(-6px)';this.style.borderColor='#F5933D'" onMouseOut="this.style.transform='none';this.style.borderColor='#232730'">
+      <div data-grade style="position:relative;aspect-ratio:16/10;background:radial-gradient(120% 90% at 78% 12%,rgba(245,147,61,.42),transparent 55%),radial-gradient(130% 120% at 8% 95%,rgba(47,211,192,.32),transparent 58%),linear-gradient(135deg,#11181b,#0e1416 55%,#161013)">
+        <span style="position:absolute;top:14px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#2FD3C0;background:rgba(10,11,14,.55);padding:5px 10px;border-radius:999px;border:1px solid rgba(47,211,192,.3)">Coaching</span>
+        <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(10,11,14,.45);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center"><span style="width:0;height:0;border-left:13px solid #F4F6FA;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:4px;display:block"></span></span>
+      </div>
+      <div style="padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <span style="font-weight:600;font-size:15.5px;color:#F4F6FA">Founder story ad</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#F5933D;white-space:nowrap">+290% leads</span>
+      </div>
+    </article>
+    <article style="background:#15171C;border:1px solid #232730;border-radius:16px;overflow:hidden;transition:transform .3s,border-color .3s" onMouseOver="this.style.transform='translateY(-6px)';this.style.borderColor='#F5933D'" onMouseOut="this.style.transform='none';this.style.borderColor='#232730'">
+      <div data-grade style="position:relative;aspect-ratio:16/10;background:radial-gradient(120% 90% at 78% 12%,rgba(245,147,61,.42),transparent 55%),radial-gradient(130% 120% at 8% 95%,rgba(47,211,192,.32),transparent 58%),linear-gradient(135deg,#11181b,#0e1416 55%,#161013)">
+        <span style="position:absolute;top:14px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#2FD3C0;background:rgba(10,11,14,.55);padding:5px 10px;border-radius:999px;border:1px solid rgba(47,211,192,.3)">SaaS</span>
+        <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(10,11,14,.45);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center"><span style="width:0;height:0;border-left:13px solid #F4F6FA;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:4px;display:block"></span></span>
+      </div>
+      <div style="padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <span style="font-weight:600;font-size:15.5px;color:#F4F6FA">Product explainer</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#F5933D;white-space:nowrap">+4.1× CTR</span>
+      </div>
+    </article>
+    <article style="background:#15171C;border:1px solid #232730;border-radius:16px;overflow:hidden;transition:transform .3s,border-color .3s" onMouseOver="this.style.transform='translateY(-6px)';this.style.borderColor='#F5933D'" onMouseOut="this.style.transform='none';this.style.borderColor='#232730'">
+      <div data-grade style="position:relative;aspect-ratio:16/10;background:radial-gradient(120% 90% at 78% 12%,rgba(245,147,61,.42),transparent 55%),radial-gradient(130% 120% at 8% 95%,rgba(47,211,192,.32),transparent 58%),linear-gradient(135deg,#11181b,#0e1416 55%,#161013)">
+        <span style="position:absolute;top:14px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#2FD3C0;background:rgba(10,11,14,.55);padding:5px 10px;border-radius:999px;border:1px solid rgba(47,211,192,.3)">Real Estate</span>
+        <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(10,11,14,.45);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center"><span style="width:0;height:0;border-left:13px solid #F4F6FA;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:4px;display:block"></span></span>
+      </div>
+      <div style="padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <span style="font-weight:600;font-size:15.5px;color:#F4F6FA">Listing showcase</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#F5933D;white-space:nowrap">CPL −58%</span>
+      </div>
+    </article>
+    <article style="background:#15171C;border:1px solid #232730;border-radius:16px;overflow:hidden;transition:transform .3s,border-color .3s" onMouseOver="this.style.transform='translateY(-6px)';this.style.borderColor='#F5933D'" onMouseOut="this.style.transform='none';this.style.borderColor='#232730'">
+      <div data-grade style="position:relative;aspect-ratio:16/10;background:radial-gradient(120% 90% at 78% 12%,rgba(245,147,61,.42),transparent 55%),radial-gradient(130% 120% at 8% 95%,rgba(47,211,192,.32),transparent 58%),linear-gradient(135deg,#11181b,#0e1416 55%,#161013)">
+        <span style="position:absolute;top:14px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#2FD3C0;background:rgba(10,11,14,.55);padding:5px 10px;border-radius:999px;border:1px solid rgba(47,211,192,.3)">Healthcare</span>
+        <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(10,11,14,.45);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center"><span style="width:0;height:0;border-left:13px solid #F4F6FA;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:4px;display:block"></span></span>
+      </div>
+      <div style="padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <span style="font-weight:600;font-size:15.5px;color:#F4F6FA">Practice intro</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#F5933D;white-space:nowrap">Lead price ÷2</span>
+      </div>
+    </article>
+    <article style="background:#15171C;border:1px solid #232730;border-radius:16px;overflow:hidden;transition:transform .3s,border-color .3s" onMouseOver="this.style.transform='translateY(-6px)';this.style.borderColor='#F5933D'" onMouseOut="this.style.transform='none';this.style.borderColor='#232730'">
+      <div data-grade style="position:relative;aspect-ratio:16/10;background:radial-gradient(120% 90% at 78% 12%,rgba(245,147,61,.42),transparent 55%),radial-gradient(130% 120% at 8% 95%,rgba(47,211,192,.32),transparent 58%),linear-gradient(135deg,#11181b,#0e1416 55%,#161013)">
+        <span style="position:absolute;top:14px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#2FD3C0;background:rgba(10,11,14,.55);padding:5px 10px;border-radius:999px;border:1px solid rgba(47,211,192,.3)">Trades</span>
+        <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(10,11,14,.45);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center"><span style="width:0;height:0;border-left:13px solid #F4F6FA;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:4px;display:block"></span></span>
+      </div>
+      <div style="padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <span style="font-weight:600;font-size:15.5px;color:#F4F6FA">Service promo</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#F5933D;white-space:nowrap">+320% calls</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="pricing" style="max-width:1200px;margin:0 auto;padding:clamp(40px,6vw,72px) 24px clamp(60px,8vw,96px)">
+  <div data-reveal style="max-width:680px;margin:0 auto 46px;text-align:center">
+    <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:#2FD3C0;margin-bottom:14px">The comparison</div>
+    <h2 style="font-size:clamp(30px,3.6vw,44px);font-weight:800;letter-spacing:-0.025em;line-height:1.08;color:#F4F6FA;margin:0 0 14px">Why teams switch to Hexafilm</h2>
+    <p style="font-size:16px;line-height:1.55;color:#AEB6C2;margin:0">Same goal — lower cost-per-lead. Very different way of getting there.</p>
+  </div>
+  <div data-reveal style="overflow-x:auto;background:#15171C;border:1px solid #232730;border-radius:16px">
+    <table style="width:100%;min-width:680px;border-collapse:separate;border-spacing:0">
+      <thead>
+        <tr>
+          <th style="text-align:left;padding:22px 24px;font-weight:500;font-size:13px;color:#6B7280;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;vertical-align:bottom">Compare</th>
+          <th style="padding:20px 22px;background:linear-gradient(180deg,rgba(245,147,61,.16),rgba(245,147,61,.06));border-left:1px solid rgba(245,147,61,.35);border-right:1px solid rgba(245,147,61,.35);border-top:1px solid rgba(245,147,61,.45);border-top-left-radius:14px;border-top-right-radius:14px">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:7px">
+              <span style="display:inline-flex"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" style="display:block"><polygon points="22,12 17,20.7 15.5,14" fill="#F5933D" stroke="#15171C" stroke-width="0.7" stroke-linejoin="round"/><polygon points="17,20.7 7,20.7 12,16" fill="#2FD3C0" stroke="#15171C" stroke-width="0.7" stroke-linejoin="round"/><polygon points="7,20.7 2,12 8.5,14" fill="#F5933D" stroke="#15171C" stroke-width="0.7" stroke-linejoin="round"/><polygon points="2,12 7,3.3 8.5,10" fill="#2FD3C0" stroke="#15171C" stroke-width="0.7" stroke-linejoin="round"/><polygon points="7,3.3 17,3.3 12,8" fill="#F5933D" stroke="#15171C" stroke-width="0.7" stroke-linejoin="round"/><polygon points="17,3.3 22,12 15.5,10" fill="#2FD3C0" stroke="#15171C" stroke-width="0.7" stroke-linejoin="round"/></svg></span>
+              <span style="font-weight:800;font-size:16px;color:#F4F6FA">Hexafilm.ai</span>
+            </div>
+          </th>
+          <th style="padding:20px 22px;font-weight:700;font-size:15px;color:#AEB6C2;vertical-align:bottom">Traditional agency</th>
+          <th style="padding:20px 22px;font-weight:700;font-size:15px;color:#AEB6C2;vertical-align:bottom">Freelancer</th>
+        </tr>
+      </thead>
+      <tbody data-cmp>
+        <tr>
+          <td style="padding:18px 24px;font-weight:600;font-size:14.5px;color:#F4F6FA;border-top:1px solid #232730">Delivery time</td>
+          <td style="padding:18px 22px;border-top:1px solid rgba(245,147,61,.18);background:rgba(245,147,61,.05);border-left:1px solid rgba(245,147,61,.35);border-right:1px solid rgba(245,147,61,.35)"><span data-yes></span><span style="font-size:14.5px;color:#F4F6FA">6 days</span></td>
+          <td style="padding:18px 22px;border-top:1px solid #232730"><span data-no></span><span style="font-size:14.5px;color:#AEB6C2">6–10 weeks</span></td>
+          <td style="padding:18px 22px;border-top:1px solid #232730"><span data-no></span><span style="font-size:14.5px;color:#AEB6C2">Unpredictable</span></td>
+        </tr>
+        <tr>
+          <td style="padding:18px 24px;font-weight:600;font-size:14.5px;color:#F4F6FA;border-top:1px solid #232730">Visual quality</td>
+          <td style="padding:18px 22px;border-top:1px solid rgba(245,147,61,.18);background:rgba(245,147,61,.05);border-left:1px solid rgba(245,147,61,.35);border-right:1px solid rgba(245,147,61,.35)"><span data-yes></span><span style="font-size:14.5px;color:#F4F6FA">3D cinema-grade</span></td>
+          <td style="padding:18px 22px;border-top:1px solid #232730"><span data-no></span><span style="font-size:14.5px;color:#AEB6C2">Stock 2D</span></td>
+          <td style="padding:18px 22px;border-top:1px solid #232730"><span data-no></span><span style="font-size:14.5px;color:#AEB6C2">Varies wildly</span></td>
+        </tr>
+        <tr>
+          <td style="padding:18px 24px;font-weight:600;font-size:14.5px;color:#F4F6FA;border-top:1px solid #232730">Built for cost-per-lead</td>
+          <td style="padding:18px 22px;border-top:1px solid rgba(245,147,61,.18);background:rgba(245,147,61,.05);border-left:1px solid rgba(245,147,61,.35);border-right:1px solid rgba(245,147,61,.35)"><span data-yes></span><span style="font-size:14.5px;color:#F4F6FA">Every frame</span></td>
+          <td style="padding:18px 22px;border-top:1px solid #232730"><span data-no></span><span style="font-size:14.5px;color:#AEB6C2">Rarely</span></td>
+          <td style="padding:18px 22px;border-top:1px solid #232730"><span data-no></span><span style="font-size:14.5px;color:#AEB6C2">No</span></td>
+        </tr>
+        <tr>
+          <td style="padding:18px 24px;font-weight:600;font-size:14.5px;color:#F4F6FA;border-top:1px solid #232730">Performance reporting</td>
+          <td style="padding:18px 22px;border-top:1px solid rgba(245,147,61,.18);background:rgba(245,147,61,.05);border-left:1px solid rgba(245,147,61,.35);border-right:1px solid rgba(245,147,61,.35)"><span data-yes></span><span style="font-size:14.5px;color:#F4F6FA">CPL &amp; CTR tracked</span></td>
+          <td style="padding:18px 22px;border-top:1px solid #232730"><span data-no></span><span style="font-size:14.5px;color:#AEB6C2">Limited</span></td>
+          <td style="padding:18px 22px;border-top:1px solid #232730"><span data-no></span><span style="font-size:14.5px;color:#AEB6C2">None</span></td>
+        </tr>
+        <tr>
+          <td style="padding:18px 24px;font-weight:600;font-size:14.5px;color:#F4F6FA;border-top:1px solid #232730">Pricing</td>
+          <td style="padding:18px 22px;border-top:1px solid rgba(245,147,61,.18);background:rgba(245,147,61,.05);border-left:1px solid rgba(245,147,61,.35);border-right:1px solid rgba(245,147,61,.35)"><span data-yes></span><span style="font-size:14.5px;color:#F4F6FA">Fixed before kickoff</span></td>
+          <td style="padding:18px 22px;border-top:1px solid #232730"><span data-no></span><span style="font-size:14.5px;color:#AEB6C2">Hourly creep</span></td>
+          <td style="padding:18px 22px;border-top:1px solid #232730"><span data-no></span><span style="font-size:14.5px;color:#AEB6C2">Inconsistent</span></td>
+        </tr>
+        <tr>
+          <td style="padding:18px 24px;font-weight:600;font-size:14.5px;color:#F4F6FA;border-top:1px solid #232730">Guarantee</td>
+          <td style="padding:18px 22px;border-top:1px solid rgba(245,147,61,.18);background:rgba(245,147,61,.05);border-left:1px solid rgba(245,147,61,.35);border-right:1px solid rgba(245,147,61,.35);border-bottom:1px solid rgba(245,147,61,.35);border-bottom-left-radius:14px;border-bottom-right-radius:14px"><span data-yes></span><span style="font-size:14.5px;color:#F4F6FA">100% satisfaction</span></td>
+          <td style="padding:18px 22px;border-top:1px solid #232730"><span data-no></span><span style="font-size:14.5px;color:#AEB6C2">None</span></td>
+          <td style="padding:18px 22px;border-top:1px solid #232730"><span data-no></span><span style="font-size:14.5px;color:#AEB6C2">None</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="process" style="max-width:1100px;margin:0 auto;padding:clamp(40px,6vw,72px) 24px clamp(60px,8vw,96px)">
+  <div data-reveal style="max-width:680px;margin-bottom:50px">
+    <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:#2FD3C0;margin-bottom:14px">The process</div>
+    <h2 style="font-size:clamp(30px,3.6vw,44px);font-weight:800;letter-spacing:-0.025em;line-height:1.08;color:#F4F6FA;margin:0 0 14px">Six days, one clear roadmap</h2>
+    <p style="font-size:16px;line-height:1.55;color:#AEB6C2;margin:0">A fixed-scope production line — you approve every step before we render a single frame.</p>
+  </div>
+  <div data-reveal style="position:relative;padding-left:8px">
+    <div style="position:absolute;left:25px;top:14px;bottom:14px;width:2px;background:linear-gradient(180deg,#F5933D,#2FD3C0)"></div>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div style="display:grid;grid-template-columns:52px 1fr;gap:22px;align-items:start">
+        <div style="position:relative;z-index:1;width:52px;height:52px;border-radius:50%;background:#0A0B0E;border:2px solid #F5933D;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:15px;color:#F5933D">01</div>
+        <div style="background:#15171C;border:1px solid #232730;border-radius:16px;padding:20px 24px">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:7px"><h3 style="font-size:18px;font-weight:700;color:#F4F6FA;margin:0">Brief</h3><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#2FD3C0;background:rgba(47,211,192,.1);padding:3px 9px;border-radius:6px">DAY 1</span></div>
+          <p style="font-size:14.5px;line-height:1.55;color:#AEB6C2;margin:0">We align on goals, the offer, and the single action your video needs to drive.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:52px 1fr;gap:22px;align-items:start">
+        <div style="position:relative;z-index:1;width:52px;height:52px;border-radius:50%;background:#0A0B0E;border:2px solid #F5933D;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:15px;color:#F5933D">02</div>
+        <div style="background:#15171C;border:1px solid #232730;border-radius:16px;padding:20px 24px">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:7px"><h3 style="font-size:18px;font-weight:700;color:#F4F6FA;margin:0">Audience</h3><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#2FD3C0;background:rgba(47,211,192,.1);padding:3px 9px;border-radius:6px">DAY 2</span></div>
+          <p style="font-size:14.5px;line-height:1.55;color:#AEB6C2;margin:0">We map your ideal buyer's pain points and the triggers that move them to act.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:52px 1fr;gap:22px;align-items:start">
+        <div style="position:relative;z-index:1;width:52px;height:52px;border-radius:50%;background:#0A0B0E;border:2px solid #F5933D;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:15px;color:#F5933D">03</div>
+        <div style="background:#15171C;border:1px solid #232730;border-radius:16px;padding:20px 24px">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:7px"><h3 style="font-size:18px;font-weight:700;color:#F4F6FA;margin:0">Script &amp; voice</h3><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#2FD3C0;background:rgba(47,211,192,.1);padding:3px 9px;border-radius:6px">DAY 3</span></div>
+          <p style="font-size:14.5px;line-height:1.55;color:#AEB6C2;margin:0">A sales-psychology script and voiceover — approved by you before production begins.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:52px 1fr;gap:22px;align-items:start">
+        <div style="position:relative;z-index:1;width:52px;height:52px;border-radius:50%;background:#0A0B0E;border:2px solid #2FD3C0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:15px;color:#2FD3C0">04</div>
+        <div style="background:#15171C;border:1px solid #232730;border-radius:16px;padding:20px 24px">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:7px"><h3 style="font-size:18px;font-weight:700;color:#F4F6FA;margin:0">3D production</h3><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#2FD3C0;background:rgba(47,211,192,.1);padding:3px 9px;border-radius:6px">DAY 4–5</span></div>
+          <p style="font-size:14.5px;line-height:1.55;color:#AEB6C2;margin:0">Cinema-grade 3D scenes rendered and finished with our signature teal-and-orange grade.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:52px 1fr;gap:22px;align-items:start">
+        <div style="position:relative;z-index:1;width:52px;height:52px;border-radius:50%;background:#0A0B0E;border:2px solid #2FD3C0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:15px;color:#2FD3C0">05</div>
+        <div style="background:#15171C;border:1px solid #232730;border-radius:16px;padding:20px 24px">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:7px"><h3 style="font-size:18px;font-weight:700;color:#F4F6FA;margin:0">Review</h3><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#2FD3C0;background:rgba(47,211,192,.1);padding:3px 9px;border-radius:6px">DAY 5</span></div>
+          <p style="font-size:14.5px;line-height:1.55;color:#AEB6C2;margin:0">You review, we refine. Fixed scope, included revisions, no surprise fees.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:52px 1fr;gap:22px;align-items:start">
+        <div style="position:relative;z-index:1;width:52px;height:52px;border-radius:50%;background:#0A0B0E;border:2px solid #2FD3C0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:15px;color:#2FD3C0">06</div>
+        <div style="background:#15171C;border:1px solid #232730;border-radius:16px;padding:20px 24px">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:7px"><h3 style="font-size:18px;font-weight:700;color:#F4F6FA;margin:0">Delivery</h3><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#2FD3C0;background:rgba(47,211,192,.1);padding:3px 9px;border-radius:6px">DAY 6</span></div>
+          <p style="font-size:14.5px;line-height:1.55;color:#AEB6C2;margin:0">Final cut delivered in every aspect ratio and format your channels need.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:clamp(40px,6vw,72px) 24px clamp(60px,8vw,96px)">
+  <div data-reveal style="max-width:680px;margin-bottom:46px">
+    <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:#2FD3C0;margin-bottom:14px">Testimonials</div>
+    <h2 style="font-size:clamp(30px,3.6vw,44px);font-weight:800;letter-spacing:-0.025em;line-height:1.08;color:#F4F6FA;margin:0">What clients report back</h2>
+  </div>
+  <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:22px;align-items:start">
+    <figure style="margin:0;background:#15171C;border:1px solid #232730;border-radius:16px;padding:28px 26px;display:flex;flex-direction:column;gap:18px">
+      <span style="color:#F5933D;font-size:15px;letter-spacing:2px">★★★★★</span>
+      <blockquote style="margin:0;font-size:16px;line-height:1.6;color:#F4F6FA">"Our cost-per-lead dropped 61% in the first two weeks. The film paid for itself before the month closed."</blockquote>
+      <figcaption style="display:flex;align-items:center;gap:12px;margin-top:auto">
+        <span style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#F5933D,#e07b22);display:flex;align-items:center;justify-content:center;font-weight:700;color:#0A0B0E;font-size:15px">ML</span>
+        <span><span style="display:block;font-weight:600;font-size:14.5px;color:#F4F6FA">Maria Lindqvist</span><span style="display:block;font-size:13px;color:#6B7280">Growth Lead · Northly</span></span>
+      </figcaption>
+    </figure>
+    <figure style="margin:0;background:#15171C;border:1px solid #232730;border-radius:16px;padding:28px 26px;display:flex;flex-direction:column;gap:18px">
+      <span style="color:#F5933D;font-size:15px;letter-spacing:2px">★★★★★</span>
+      <blockquote style="margin:0;font-size:16px;line-height:1.6;color:#F4F6FA">"Six days from brief to broadcast-ready. I've never seen an agency move at this speed without cutting corners."</blockquote>
+      <figcaption style="display:flex;align-items:center;gap:12px;margin-top:auto">
+        <span style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#2FD3C0,#1ea99a);display:flex;align-items:center;justify-content:center;font-weight:700;color:#0A0B0E;font-size:15px">DR</span>
+        <span><span style="display:block;font-weight:600;font-size:14.5px;color:#F4F6FA">Daniel Roy</span><span style="display:block;font-size:13px;color:#6B7280">Founder · Vantix</span></span>
+      </figcaption>
+    </figure>
+    <figure style="margin:0;background:#15171C;border:1px solid #232730;border-radius:16px;padding:28px 26px;display:flex;flex-direction:column;gap:18px">
+      <span style="color:#F5933D;font-size:15px;letter-spacing:2px">★★★★★</span>
+      <blockquote style="margin:0;font-size:16px;line-height:1.6;color:#F4F6FA">"The 3D quality is genuinely cinema-grade. Our click-through rate more than tripled on the same spend."</blockquote>
+      <figcaption style="display:flex;align-items:center;gap:12px;margin-top:auto">
+        <span style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#F5933D,#2FD3C0);display:flex;align-items:center;justify-content:center;font-weight:700;color:#0A0B0E;font-size:15px">PN</span>
+        <span><span style="display:block;font-weight:600;font-size:14.5px;color:#F4F6FA">Priya Nair</span><span style="display:block;font-size:13px;color:#6B7280">CMO · Helio</span></span>
+      </figcaption>
+    </figure>
+  </div>
+  <div data-reveal style="margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px 26px;background:#15171C;border:1px solid #232730;border-radius:16px;padding:22px 28px">
+    <span style="font-weight:600;font-size:15px;color:#AEB6C2">Rated on Google</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:600;color:#F4F6FA">4.9<span style="font-size:16px;color:#6B7280">/5</span></span>
+    <span style="color:#F5933D;font-size:18px;letter-spacing:3px">★★★★★</span>
+    <span style="font-size:14px;color:#6B7280">from 120+ verified reviews</span>
+  </div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:clamp(40px,6vw,72px) 24px clamp(60px,8vw,96px)">
+  <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:36px;align-items:start">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:#2FD3C0;margin-bottom:14px">FAQ</div>
+      <h2 style="font-size:clamp(28px,3.4vw,40px);font-weight:800;letter-spacing:-0.025em;line-height:1.1;color:#F4F6FA;margin:0 0 28px">Questions, answered</h2>
+      <div data-faq-list style="display:flex;flex-direction:column;gap:12px">
+        <div data-faq data-open="0" style="background:#15171C;border:1px solid #232730;border-radius:16px;overflow:hidden">
+          <button data-faq-q aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;background:transparent;border:none;text-align:left">
+            <span style="font-weight:600;font-size:16px;color:#F4F6FA">How fast can you deliver?</span>
+            <span data-faq-icon style="flex-shrink:0;color:#F5933D;font-size:22px;line-height:1;transition:transform .3s;font-weight:300">+</span>
+          </button>
+          <div data-faq-a style="max-height:0;opacity:0;overflow:hidden;transition:max-height .35s ease,opacity .35s ease"><p style="margin:0;padding:0 22px 20px;font-size:14.5px;line-height:1.6;color:#AEB6C2">Most projects ship in six working days from approved brief to final cut. Rush timelines are available when a campaign can't wait.</p></div>
+        </div>
+        <div data-faq data-open="0" style="background:#15171C;border:1px solid #232730;border-radius:16px;overflow:hidden">
+          <button data-faq-q aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;background:transparent;border:none;text-align:left">
+            <span style="font-weight:600;font-size:16px;color:#F4F6FA">How do you lower cost-per-lead?</span>
+            <span data-faq-icon style="flex-shrink:0;color:#F5933D;font-size:22px;line-height:1;transition:transform .3s;font-weight:300">+</span>
+          </button>
+          <div data-faq-a style="max-height:0;opacity:0;overflow:hidden;transition:max-height .35s ease,opacity .35s ease"><p style="margin:0;padding:0 22px 20px;font-size:14.5px;line-height:1.6;color:#AEB6C2">Every script is built on sales psychology and tested hooks, then graded for stopping power in the feed. Better attention means lower cost per qualified lead.</p></div>
+        </div>
+        <div data-faq data-open="0" style="background:#15171C;border:1px solid #232730;border-radius:16px;overflow:hidden">
+          <button data-faq-q aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;background:transparent;border:none;text-align:left">
+            <span style="font-weight:600;font-size:16px;color:#F4F6FA">What does it cost?</span>
+            <span data-faq-icon style="flex-shrink:0;color:#F5933D;font-size:22px;line-height:1;transition:transform .3s;font-weight:300">+</span>
+          </button>
+          <div data-faq-a style="max-height:0;opacity:0;overflow:hidden;transition:max-height .35s ease,opacity .35s ease"><p style="margin:0;padding:0 22px 20px;font-size:14.5px;line-height:1.6;color:#AEB6C2">A fixed price agreed before kickoff — no hourly creep and no surprise post-production fees. You'll know the full number on your call.</p></div>
+        </div>
+        <div data-faq data-open="0" style="background:#15171C;border:1px solid #232730;border-radius:16px;overflow:hidden">
+          <button data-faq-q aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;background:transparent;border:none;text-align:left">
+            <span style="font-weight:600;font-size:16px;color:#F4F6FA">Do I own the video?</span>
+            <span data-faq-icon style="flex-shrink:0;color:#F5933D;font-size:22px;line-height:1;transition:transform .3s;font-weight:300">+</span>
+          </button>
+          <div data-faq-a style="max-height:0;opacity:0;overflow:hidden;transition:max-height .35s ease,opacity .35s ease"><p style="margin:0;padding:0 22px 20px;font-size:14.5px;line-height:1.6;color:#AEB6C2">Yes. You receive full commercial rights to every asset we produce — use it across any channel, for as long as you like.</p></div>
+        </div>
+        <div data-faq data-open="0" style="background:#15171C;border:1px solid #232730;border-radius:16px;overflow:hidden">
+          <button data-faq-q aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;background:transparent;border:none;text-align:left">
+            <span style="font-weight:600;font-size:16px;color:#F4F6FA">What if I'm not happy?</span>
+            <span data-faq-icon style="flex-shrink:0;color:#F5933D;font-size:22px;line-height:1;transition:transform .3s;font-weight:300">+</span>
+          </button>
+          <div data-faq-a style="max-height:0;opacity:0;overflow:hidden;transition:max-height .35s ease,opacity .35s ease"><p style="margin:0;padding:0 22px 20px;font-size:14.5px;line-height:1.6;color:#AEB6C2">We work to a 100% satisfaction guarantee and refine within a fixed scope until it's right. No risk on your side.</p></div>
+        </div>
+      </div>
+    </div>
+    <div style="position:relative;background:#15171C;border:1px solid #232730;border-radius:16px;padding:34px 30px;overflow:hidden">
+      <div style="position:absolute;inset:0;background:radial-gradient(120% 90% at 90% 0%,rgba(245,147,61,.14),transparent 55%);pointer-events:none"></div>
+      <div style="position:relative">
+        <span style="display:inline-flex;margin-bottom:18px"><svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true" style="display:block"><polygon points="22,12 17,20.7 15.5,14" fill="#F5933D" stroke="#15171C" stroke-width="0.7" stroke-linejoin="round"/><polygon points="17,20.7 7,20.7 12,16" fill="#2FD3C0" stroke="#15171C" stroke-width="0.7" stroke-linejoin="round"/><polygon points="7,20.7 2,12 8.5,14" fill="#F5933D" stroke="#15171C" stroke-width="0.7" stroke-linejoin="round"/><polygon points="2,12 7,3.3 8.5,10" fill="#2FD3C0" stroke="#15171C" stroke-width="0.7" stroke-linejoin="round"/><polygon points="7,3.3 17,3.3 12,8" fill="#F5933D" stroke="#15171C" stroke-width="0.7" stroke-linejoin="round"/><polygon points="17,3.3 22,12 15.5,10" fill="#2FD3C0" stroke="#15171C" stroke-width="0.7" stroke-linejoin="round"/></svg></span>
+        <h3 style="font-size:24px;font-weight:800;letter-spacing:-0.02em;color:#F4F6FA;margin:0 0 12px">Still deciding?</h3>
+        <p style="font-size:15.5px;line-height:1.6;color:#AEB6C2;margin:0 0 24px">Book a 20-minute call. We'll map your video and the leads it can unlock — no pitch, no obligation.</p>
+        <a href="#book" style="display:flex;align-items:center;justify-content:center;gap:9px;background:linear-gradient(135deg,#F5933D,#e07b22);color:#0A0B0E;font-weight:700;font-size:16px;padding:15px 24px;border-radius:12px;box-shadow:0 10px 30px rgba(245,147,61,.3);transition:transform .2s" onMouseOver="this.style.transform='translateY(-2px)'" onMouseOut="this.style.transform='none'">Book a Call →</a>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;color:#6B7280;text-align:center;margin:16px 0 0">No obligation · No risk · 100% satisfaction guaranteed</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="book" style="padding:clamp(20px,4vw,40px) 24px clamp(60px,8vw,96px)">
+  <div data-reveal style="position:relative;max-width:1100px;margin:0 auto;border-radius:24px;overflow:hidden;border:1px solid rgba(245,147,61,.3);background:radial-gradient(120% 140% at 50% 0%,rgba(245,147,61,.22),transparent 60%),radial-gradient(100% 120% at 100% 100%,rgba(47,211,192,.18),transparent 55%),#0e1013;padding:clamp(44px,6vw,72px) clamp(24px,4vw,56px);text-align:center;box-shadow:0 0 80px rgba(245,147,61,.12)">
+    <h2 style="font-size:clamp(30px,4.4vw,52px);font-weight:800;letter-spacing:-0.03em;line-height:1.05;color:#F4F6FA;margin:0 0 16px;max-width:760px;margin-left:auto;margin-right:auto">One video away from<br><span style="background:linear-gradient(115deg,#F5933D,#2FD3C0);-webkit-background-clip:text;background-clip:text;color:transparent">cheaper leads.</span></h2>
+    <p style="font-size:clamp(16px,1.5vw,18px);line-height:1.55;color:#AEB6C2;margin:0 auto 30px;max-width:520px">Book a call today and we'll show you exactly how a 3D explainer cuts your cost-per-lead — delivered in six days.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center">
+      <a href="#book" style="display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,#F5933D,#e07b22);color:#0A0B0E;font-weight:700;font-size:17px;padding:16px 32px;border-radius:12px;box-shadow:0 12px 38px rgba(245,147,61,.4);transition:transform .2s,box-shadow .2s" onMouseOver="this.style.transform='translateY(-2px)';this.style.boxShadow='0 16px 46px rgba(245,147,61,.55)'" onMouseOut="this.style.transform='none';this.style.boxShadow='0 12px 38px rgba(245,147,61,.4)'">Book a Call →</a>
+      <a href="#portfolio" style="display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.04);color:#F4F6FA;font-weight:600;font-size:17px;padding:16px 30px;border-radius:12px;border:1px solid #232730;transition:border-color .2s" onMouseOver="this.style.borderColor='#2FD3C0'" onMouseOut="this.style.borderColor='#232730'">See the Portfolio</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer style="border-top:1px solid #15171C;padding:clamp(48px,6vw,72px) 24px 40px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:40px 30px">
+    <div style="grid-column:span 1;min-width:200px">
+      <a href="#top" style="display:flex;align-items:center;gap:11px;margin-bottom:16px">
+        <span style="display:inline-flex"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" style="display:block"><polygon points="22,12 17,20.7 15.5,14" fill="#F5933D" stroke="#0A0B0E" stroke-width="0.6" stroke-linejoin="round"/><polygon points="17,20.7 7,20.7 12,16" fill="#2FD3C0" stroke="#0A0B0E" stroke-width="0.6" stroke-linejoin="round"/><polygon points="7,20.7 2,12 8.5,14" fill="#F5933D" stroke="#0A0B0E" stroke-width="0.6" stroke-linejoin="round"/><polygon points="2,12 7,3.3 8.5,10" fill="#2FD3C0" stroke="#0A0B0E" stroke-width="0.6" stroke-linejoin="round"/><polygon points="7,3.3 17,3.3 12,8" fill="#F5933D" stroke="#0A0B0E" stroke-width="0.6" stroke-linejoin="round"/><polygon points="17,3.3 22,12 15.5,10" fill="#2FD3C0" stroke="#0A0B0E" stroke-width="0.6" stroke-linejoin="round"/></svg></span>
+        <span style="font-weight:800;font-size:18px;color:#F4F6FA">Hexafilm<span style="color:#2FD3C0">.ai</span></span>
+      </a>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.04em;color:#6B7280;margin:0 0 20px">Cinema at AI speed.</p>
+      <div style="display:flex;gap:10px">
+        <a href="#top" aria-label="X" style="width:38px;height:38px;border-radius:10px;background:#15171C;border:1px solid #232730;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#AEB6C2;transition:color .2s,border-color .2s" onMouseOver="this.style.color='#2FD3C0';this.style.borderColor='#2FD3C0'" onMouseOut="this.style.color='#AEB6C2';this.style.borderColor='#232730'">X</a>
+        <a href="#top" aria-label="LinkedIn" style="width:38px;height:38px;border-radius:10px;background:#15171C;border:1px solid #232730;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:#AEB6C2;transition:color .2s,border-color .2s" onMouseOver="this.style.color='#2FD3C0';this.style.borderColor='#2FD3C0'" onMouseOut="this.style.color='#AEB6C2';this.style.borderColor='#232730'">in</a>
+        <a href="#top" aria-label="YouTube" style="width:38px;height:38px;border-radius:10px;background:#15171C;border:1px solid #232730;display:flex;align-items:center;justify-content:center;color:#AEB6C2;transition:color .2s,border-color .2s" onMouseOver="this.style.color='#2FD3C0';this.style.borderColor='#2FD3C0'" onMouseOut="this.style.color='#AEB6C2';this.style.borderColor='#232730'"><span style="width:0;height:0;border-left:9px solid currentColor;border-top:5.5px solid transparent;border-bottom:5.5px solid transparent;margin-left:2px;display:block"></span></a>
+      </div>
+    </div>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:#6B7280;margin-bottom:16px">Studio</div>
+      <div style="display:flex;flex-direction:column;gap:11px">
+        <a href="#portfolio" style="font-size:14.5px;color:#AEB6C2;transition:color .2s" onMouseOver="this.style.color='#F4F6FA'" onMouseOut="this.style.color='#AEB6C2'">Portfolio</a>
+        <a href="#process" style="font-size:14.5px;color:#AEB6C2;transition:color .2s" onMouseOver="this.style.color='#F4F6FA'" onMouseOut="this.style.color='#AEB6C2'">Process</a>
+        <a href="#results" style="font-size:14.5px;color:#AEB6C2;transition:color .2s" onMouseOver="this.style.color='#F4F6FA'" onMouseOut="this.style.color='#AEB6C2'">Results</a>
+        <a href="#pricing" style="font-size:14.5px;color:#AEB6C2;transition:color .2s" onMouseOver="this.style.color='#F4F6FA'" onMouseOut="this.style.color='#AEB6C2'">Pricing</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:#6B7280;margin-bottom:16px">Company</div>
+      <div style="display:flex;flex-direction:column;gap:11px">
+        <a href="#top" style="font-size:14.5px;color:#AEB6C2;transition:color .2s" onMouseOver="this.style.color='#F4F6FA'" onMouseOut="this.style.color='#AEB6C2'">About</a>
+        <a href="#top" style="font-size:14.5px;color:#AEB6C2;transition:color .2s" onMouseOver="this.style.color='#F4F6FA'" onMouseOut="this.style.color='#AEB6C2'">Careers</a>
+        <a href="#book" style="font-size:14.5px;color:#AEB6C2;transition:color .2s" onMouseOver="this.style.color='#F4F6FA'" onMouseOut="this.style.color='#AEB6C2'">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:#6B7280;margin-bottom:16px">Legal</div>
+      <div style="display:flex;flex-direction:column;gap:11px">
+        <a href="#top" style="font-size:14.5px;color:#AEB6C2;transition:color .2s" onMouseOver="this.style.color='#F4F6FA'" onMouseOut="this.style.color='#AEB6C2'">Privacy</a>
+        <a href="#top" style="font-size:14.5px;color:#AEB6C2;transition:color .2s" onMouseOver="this.style.color='#F4F6FA'" onMouseOut="this.style.color='#AEB6C2'">Terms</a>
+        <a href="#top" style="font-size:14.5px;color:#AEB6C2;transition:color .2s" onMouseOver="this.style.color='#F4F6FA'" onMouseOut="this.style.color='#AEB6C2'">Imprint</a>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:42px auto 0;padding-top:24px;border-top:1px solid #15171C;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center">
+    <span style="font-size:13px;color:#6B7280">© 2026 Hexafilm.ai — AI-powered cinematic video studio.</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#6B7280">MADE WITH A 6-BLADE APERTURE ◬</span>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;motionStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Cinematic&quot;,&quot;Subtle&quot;,&quot;Off&quot;],&quot;default&quot;:&quot;Cinematic&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;gradeStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Teal &amp; Orange&quot;,&quot;Warm Ember&quot;,&quot;Cool Teal&quot;],&quot;default&quot;:&quot;Teal &amp; Orange&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Visuals&quot;},&quot;showMetricBadges&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Visuals&quot;}}">
+class Component extends DCLogic {
+  renderVals() { return {}; }
+
+  componentDidMount() {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const motion = this.props.motionStyle || 'Cinematic';
+    const animate = !reduce && motion !== 'Off';
+    const subtle = motion === 'Subtle';
+
+    // --- comparison check / cross marks ---
+    document.querySelectorAll('[data-yes]').forEach(s => {
+      s.style.cssText = 'display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(47,211,192,.15);color:#2FD3C0;font-size:13px;font-weight:700;margin-right:10px;vertical-align:middle';
+      s.textContent = '\u2713';
+    });
+    document.querySelectorAll('[data-no]').forEach(s => {
+      s.style.cssText = 'display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(107,114,128,.18);color:#6B7280;font-size:12px;font-weight:700;margin-right:10px;vertical-align:middle';
+      s.textContent = '\u2715';
+    });
+
+    // --- grade restyle ---
+    const grade = this.props.gradeStyle || 'Teal & Orange';
+    const grades = {
+      'Warm Ember': 'radial-gradient(120% 90% at 75% 12%,rgba(245,147,61,.55),transparent 55%),radial-gradient(130% 120% at 8% 95%,rgba(224,123,34,.32),transparent 58%),linear-gradient(135deg,#1a120b,#120d0a 55%,#1c130c)',
+      'Cool Teal': 'radial-gradient(120% 90% at 75% 12%,rgba(47,211,192,.5),transparent 55%),radial-gradient(130% 120% at 8% 95%,rgba(20,110,108,.32),transparent 58%),linear-gradient(135deg,#0c1719,#0b1213 55%,#0e1a1a)'
+    };
+    if (grades[grade]) {
+      document.querySelectorAll('[data-grade]').forEach(el => { el.style.background = grades[grade]; });
+    }
+
+    // --- metric badges toggle ---
+    if (this.props.showMetricBadges === false) {
+      document.querySelectorAll('[data-metric-badge]').forEach(el => { el.style.display = 'none'; });
+    }
+
+    // --- aperture open animation ---
+    if (animate) {
+      document.querySelectorAll('[data-aperture]').forEach(el => {
+        el.style.transformOrigin = 'center';
+        el.style.animation = 'hxAperture 1.05s cubic-bezier(.16,1,.3,1) both';
+      });
+      document.querySelectorAll('[data-float]').forEach((el, i) => {
+        if (!subtle) el.style.animation = `hxFloat ${4 + i * 0.7}s ease-in-out ${i * 0.3}s infinite`;
+      });
+      document.querySelectorAll('[data-pulse]').forEach(el => {
+        if (!subtle) el.style.animation = 'hxPulse 2.6s ease-out infinite';
+      });
+    }
+
+    // --- scroll reveal (scroll/rAF based; IntersectionObserver is unreliable in some embeds) ---
+    const items = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+    const reveal = (el) => {
+      if (el._shown) return;
+      el._shown = true;
+      const d = parseFloat(el.getAttribute('data-delay') || '0');
+      el.style.transitionDelay = d + 'ms';
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    };
+    if (!animate) {
+      items.forEach(reveal);
+    } else {
+      items.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(26px)';
+        el.style.transition = 'opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1)';
+      });
+      let ticking = false;
+      const check = () => {
+        ticking = false;
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        items.forEach(el => {
+          if (el._shown) return;
+          const r = el.getBoundingClientRect();
+          if (r.top < vh * 0.88 && r.bottom > -40) reveal(el);
+        });
+      };
+      const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(check); } };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      requestAnimationFrame(check);
+      // safety: never leave content hidden
+      setTimeout(() => items.forEach(reveal), 2200);
+    }
+
+    // --- FAQ accordion ---
+    document.querySelectorAll('[data-faq-q]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('[data-faq]');
+        const ans = item.querySelector('[data-faq-a]');
+        const icon = btn.querySelector('[data-faq-icon]');
+        const open = item.getAttribute('data-open') === '1';
+        if (open) {
+          ans.style.maxHeight = '0px';
+          ans.style.opacity = '0';
+          item.setAttribute('data-open', '0');
+          item.style.borderColor = '#232730';
+          if (icon) icon.style.transform = 'rotate(0deg)';
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          ans.style.maxHeight = ans.scrollHeight + 'px';
+          ans.style.opacity = '1';
+          item.setAttribute('data-open', '1');
+          item.style.borderColor = 'rgba(245,147,61,.4)';
+          if (icon) icon.style.transform = 'rotate(45deg)';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // --- responsive nav ---
+    const links = document.querySelector('[data-nav-links]');
+    const burger = document.querySelector('[data-nav-burger]');
+    const menu = document.querySelector('[data-nav-menu]');
+    let menuOpen = false;
+    const applyNav = () => {
+      const mobile = window.innerWidth < 1120;
+      if (mobile) {
+        if (links) links.style.display = 'none';
+        if (burger) burger.style.display = 'inline-flex';
+      } else {
+        if (links) links.style.display = 'flex';
+        if (burger) burger.style.display = 'none';
+        if (menu) menu.style.display = 'none';
+        menuOpen = false;
+      }
+    };
+    if (burger && menu) {
+      burger.addEventListener('click', () => {
+        menuOpen = !menuOpen;
+        menu.style.display = menuOpen ? 'flex' : 'none';
+      });
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        menuOpen = false; menu.style.display = 'none';
+      }));
+    }
+    window.addEventListener('resize', applyNav);
+    applyNav();
+
+    // --- smooth scroll w/ sticky offset ---
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (id && id.length > 1) {
+          const t = document.querySelector(id);
+          if (t) {
+            e.preventDefault();
+            const y = t.getBoundingClientRect().top + window.pageYOffset - 78;
+            window.scrollTo({ top: y, behavior: animate ? 'smooth' : 'auto' });
+          }
+        }
+      });
+    });
+  }
+}
+</script>
+</body>
+</html>

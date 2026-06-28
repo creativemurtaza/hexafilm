@@ -1,0 +1,5 @@
+# Local Claude Design source uploads; keep these off GitHub.
+# The smaller screenshots folder is intentionally not ignored for visual QA context.
+\# Hexafilm.ai Marketing Website/uploads/
+
+.DS_Store
