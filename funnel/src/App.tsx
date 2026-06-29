@@ -178,7 +178,7 @@ export default function App() {
                     <PhoneInput
                       key={field.key}
                       phoneValue={answers.phone ?? ''}
-                      codeValue={answers.phoneCode ?? '+1'}
+                      codeValue={answers.phoneCode ?? 'US'}
                       error={errors[field.key]}
                       autoFocus={i === 0}
                       onPhoneChange={setAnswer}

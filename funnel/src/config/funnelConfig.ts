@@ -124,7 +124,7 @@ export const defaultAnswers: Record<string, string> = {
   lastName: '',
   email: '',
   phone: '',
-  phoneCode: '+1',
+  phoneCode: 'US',
   website: '',
   businessType: '',
   mainGoal: '',
