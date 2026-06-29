@@ -1,13 +1,16 @@
-import { useEffect } from 'react';
+import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Logo } from './Logo';
 import { TrustBadge } from './TrustBadge';
-import { CALENDLY_URL } from '../config/brand';
+import { BookingCalendar } from './BookingCalendar';
+import { TimeSlots } from './TimeSlots';
 
 interface BookingStepProps {
   answers: Record<string, string>;
   onReset: () => void;
 }
+
+type BookingPhase = 'date' | 'time' | 'confirm' | 'done';
 
 const badges = [
   { icon: '\u{1F3C6}', label: 'Growth Champion 2026' },
@@ -20,17 +23,44 @@ export function BookingStep({ answers, onReset }: BookingStepProps) {
   const name = `${answers.firstName ?? ''} ${answers.lastName ?? ''}`.trim();
   const email = answers.email ?? '';
 
-  const calendlyUrl = `${CALENDLY_URL}?hide_gdpr_banner=1&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
+  const [phase, setPhase] = useState<BookingPhase>('date');
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [selectedTime, setSelectedTime] = useState<string | null>(null);
 
-  useEffect(() => {
-    const existing = document.querySelector('script[src*="calendly.com"]');
-    if (!existing) {
-      const script = document.createElement('script');
-      script.src = 'https://assets.calendly.com/assets/external/widget.js';
-      script.async = true;
-      document.head.appendChild(script);
-    }
-  }, []);
+  function handleDateSelect(date: Date) {
+    setSelectedDate(date);
+    setSelectedTime(null);
+    setPhase('time');
+  }
+
+  function handleTimeSelect(time: string) {
+    setSelectedTime(time);
+    setPhase('confirm');
+  }
+
+  function handleConfirm() {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    fetch('/api/book', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name,
+        email,
+        date: selectedDate?.toISOString().split('T')[0],
+        time: selectedTime,
+        timezone: tz,
+        answers,
+      }),
+    }).catch(() => {});
+    setPhase('done');
+  }
+
+  const dateLabel = selectedDate?.toLocaleDateString('en-US', {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
 
   return (
     <div className="min-h-screen bg-obsidian font-display">
@@ -90,13 +120,120 @@ export function BookingStep({ answers, onReset }: BookingStepProps) {
             </div>
           </div>
 
-          {/* Right column — Calendly */}
-          <div className="bg-white rounded-card overflow-hidden shadow-2xl min-h-[680px]">
-            <div
-              className="calendly-inline-widget"
-              data-url={calendlyUrl}
-              style={{ minWidth: '280px', height: '680px' }}
-            />
+          {/* Right column — Booking widget */}
+          <div className="bg-white rounded-card overflow-hidden shadow-2xl">
+            <div className="p-6 sm:p-8">
+              {/* Phase: Pick a date */}
+              {phase === 'date' && (
+                <div>
+                  <h3 className="text-base font-semibold text-gray-900 mb-1">Select a date</h3>
+                  <p className="text-xs text-gray-400 mb-5">Pick a day for your strategy call</p>
+                  <BookingCalendar selected={selectedDate} onSelect={handleDateSelect} />
+                </div>
+              )}
+
+              {/* Phase: Pick a time */}
+              {phase === 'time' && selectedDate && (
+                <div className="min-h-[360px] flex flex-col">
+                  <h3 className="text-base font-semibold text-gray-900 mb-1">Select a time</h3>
+                  <p className="text-xs text-gray-400 mb-4">30-minute strategy call</p>
+                  <TimeSlots
+                    date={selectedDate}
+                    selected={selectedTime}
+                    onSelect={handleTimeSelect}
+                    onBack={() => setPhase('date')}
+                  />
+                </div>
+              )}
+
+              {/* Phase: Confirm */}
+              {phase === 'confirm' && selectedDate && selectedTime && (
+                <div>
+                  <h3 className="text-base font-semibold text-gray-900 mb-1">Confirm your booking</h3>
+                  <p className="text-xs text-gray-400 mb-6">Review and confirm your strategy call</p>
+
+                  <div className="space-y-4 mb-8">
+                    <div className="flex items-start gap-3 p-3 rounded-lg bg-gray-50">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="text-[#F5933D] mt-0.5 flex-shrink-0" aria-hidden="true">
+                        <rect x="2" y="3" width="14" height="13" rx="2" stroke="currentColor" strokeWidth="1.5" />
+                        <path d="M2 7h14M6 1v4M12 1v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                      </svg>
+                      <div>
+                        <p className="text-sm font-medium text-gray-900">{dateLabel}</p>
+                        <p className="text-sm text-gray-500">{selectedTime} &middot; 30 min</p>
+                        <p className="text-xs text-gray-400 mt-0.5">{Intl.DateTimeFormat().resolvedOptions().timeZone}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3 p-3 rounded-lg bg-gray-50">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="text-[#F5933D] mt-0.5 flex-shrink-0" aria-hidden="true">
+                        <circle cx="9" cy="6" r="3.5" stroke="currentColor" strokeWidth="1.5" />
+                        <path d="M2 16c0-3.3 3.1-6 7-6s7 2.7 7 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                      </svg>
+                      <div>
+                        <p className="text-sm font-medium text-gray-900">{name}</p>
+                        <p className="text-sm text-gray-500">{email}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setPhase('time')}
+                      className="px-4 py-2.5 rounded-[12px] text-sm font-medium text-gray-500 border border-gray-200 hover:border-gray-300 transition-colors"
+                    >
+                      Back
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleConfirm}
+                      className="flex-1 py-2.5 rounded-[12px] text-sm font-semibold text-white bg-[#F5933D] hover:bg-[#E0762A] shadow-sm transition-colors"
+                    >
+                      Confirm booking
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Phase: Done */}
+              {phase === 'done' && (
+                <div className="text-center py-8">
+                  <motion.div
+                    initial={reducedMotion ? {} : { scale: 0.5, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={reducedMotion ? { duration: 0 } : { duration: 0.4, ease: 'easeOut' }}
+                    className="w-16 h-16 mx-auto mb-5 rounded-full bg-orange-50 flex items-center justify-center"
+                  >
+                    <motion.svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 28 28"
+                      fill="none"
+                    >
+                      <motion.path
+                        d="M6 14l6 6 10-10"
+                        stroke="#F5933D"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        initial={reducedMotion ? {} : { pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={reducedMotion ? { duration: 0 } : { duration: 0.5, delay: 0.2 }}
+                      />
+                    </motion.svg>
+                  </motion.div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">You&apos;re booked!</h3>
+                  <p className="text-sm text-gray-500 max-w-xs mx-auto">
+                    A calendar invite has been sent to <span className="font-medium text-gray-700">{email}</span>.
+                  </p>
+                  <div className="mt-6 p-3 rounded-lg bg-gray-50 text-left inline-block">
+                    <p className="text-sm font-medium text-gray-900">{dateLabel}</p>
+                    <p className="text-sm text-gray-500">{selectedTime} &middot; 30 min</p>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </motion.div>
       </main>

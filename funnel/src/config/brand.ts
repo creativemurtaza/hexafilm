@@ -14,6 +14,3 @@ export const fonts = {
   display: "'Inter', sans-serif",
   mono: "'JetBrains Mono', monospace",
 } as const;
-
-export const CALENDLY_URL =
-  import.meta.env.VITE_CALENDLY_URL || 'https://calendly.com/your-link';
