@@ -3,3 +3,9 @@
 \# Hexafilm.ai Marketing Website/uploads/
 
 .DS_Store
+.vercel
+
+# Funnel app
+funnel/node_modules/
+funnel/dist/
+funnel/.claude/

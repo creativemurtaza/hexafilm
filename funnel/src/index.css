@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #0A0B0E;
+    color: #F4F6FA;
+  }
+
+  ::selection {
+    background: rgba(245, 147, 61, 0.3);
+    color: #F4F6FA;
+  }
+}
+
+@layer components {
+  .underline-accent {
+    position: relative;
+    display: inline-block;
+  }
+
+  .underline-accent::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 10px;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 10' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3E%3Cpath d='M2 7 Q 25 2, 50 6 T 100 5 T 150 6 T 198 5' stroke='%23F5933D' stroke-width='2.5' fill='none' stroke-linecap='round' opacity='0.85'/%3E%3C/svg%3E") no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .focus-ember:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(245, 147, 61, 0.5);
+  }
+
+  .focus-ember:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #F5933D;
+  }
+}
