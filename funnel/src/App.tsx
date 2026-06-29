@@ -5,6 +5,7 @@ import { ProgressBar } from './components/ProgressBar';
 import { FunnelStep } from './components/FunnelStep';
 import { ChoiceOption } from './components/ChoiceOption';
 import { TextInput } from './components/TextInput';
+import { PhoneInput } from './components/PhoneInput';
 import { NavigationButtons } from './components/NavigationButtons';
 import { BookingStep } from './components/BookingStep';
 import { steps } from './config/funnelConfig';
@@ -172,20 +173,33 @@ export default function App() {
             >
               {/* Text inputs */}
               {step.type === 'text' &&
-                step.fields?.map((field, i) => (
-                  <TextInput
-                    key={field.key}
-                    fieldKey={field.key}
-                    label={field.label}
-                    placeholder={field.placeholder}
-                    type={field.type}
-                    value={answers[field.key] ?? ''}
-                    error={errors[field.key]}
-                    autoFocus={i === 0}
-                    onChange={setAnswer}
-                    onEnter={handleNext}
-                  />
-                ))}
+                step.fields?.map((field, i) =>
+                  field.isPhone ? (
+                    <PhoneInput
+                      key={field.key}
+                      phoneValue={answers.phone ?? ''}
+                      codeValue={answers.phoneCode ?? '+1'}
+                      error={errors[field.key]}
+                      autoFocus={i === 0}
+                      onPhoneChange={setAnswer}
+                      onCodeChange={setAnswer}
+                      onEnter={handleNext}
+                    />
+                  ) : (
+                    <TextInput
+                      key={field.key}
+                      fieldKey={field.key}
+                      label={field.label}
+                      placeholder={field.placeholder}
+                      type={field.type}
+                      value={answers[field.key] ?? ''}
+                      error={errors[field.key]}
+                      autoFocus={i === 0}
+                      onChange={setAnswer}
+                      onEnter={handleNext}
+                    />
+                  ),
+                )}
 
               {/* Choice options */}
               {step.type === 'choice' && (

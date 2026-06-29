@@ -4,6 +4,7 @@ export interface TextFieldConfig {
   placeholder?: string;
   type?: 'text' | 'email' | 'tel' | 'url';
   required?: boolean;
+  isPhone?: boolean;
 }
 
 export interface ChoiceConfig {
@@ -42,7 +43,7 @@ export const steps: StepConfig[] = [
     type: 'text',
     fields: [
       { key: 'email', label: 'Email', placeholder: 'jane@company.com', type: 'email', required: true },
-      { key: 'phone', label: 'Phone (optional)', placeholder: '+1 555 000 0000', type: 'tel' },
+      { key: 'phone', label: 'Phone (optional)', placeholder: '555 000 0000', type: 'tel', isPhone: true },
     ],
     submitLabel: 'OK',
   },
@@ -123,6 +124,7 @@ export const defaultAnswers: Record<string, string> = {
   lastName: '',
   email: '',
   phone: '',
+  phoneCode: '+1',
   website: '',
   businessType: '',
   mainGoal: '',
