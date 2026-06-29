@@ -40,18 +40,41 @@ export function BookingStep({ answers, onReset }: BookingStepProps) {
 
   function handleConfirm() {
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const dateStr = selectedDate?.toISOString().split('T')[0];
+    const bookingData = {
+      name,
+      email,
+      date: dateStr,
+      time: selectedTime,
+      timezone: tz,
+      phone: answers.phone ? `${answers.phoneCode} ${answers.phone}` : '',
+      website: answers.website,
+      business_type: answers.businessType,
+      goal: answers.mainGoal,
+      revenue: answers.monthlyRevenue,
+      team_size: answers.teamSize,
+    };
+
+    const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY;
+    if (WEB3FORMS_KEY) {
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `New booking: ${name} — ${dateStr} at ${selectedTime}`,
+          from_name: 'Hexafilm.ai Funnel',
+          ...bookingData,
+        }),
+      }).catch(() => {});
+    }
+
     fetch('/api/book', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name,
-        email,
-        date: selectedDate?.toISOString().split('T')[0],
-        time: selectedTime,
-        timezone: tz,
-        answers,
-      }),
+      body: JSON.stringify(bookingData),
     }).catch(() => {});
+
     setPhase('done');
   }
 
