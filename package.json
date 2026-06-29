@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "cd funnel && npm install && npm run build && mkdir -p ../out/book && cp -r dist/* ../out/book/ && cd .. && cp index.html styles.css script.js out/"
+  }
+}

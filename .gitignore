@@ -5,6 +5,9 @@
 .DS_Store
 .vercel
 
+# Build output
+out/
+
 # Funnel app
 funnel/node_modules/
 funnel/dist/
